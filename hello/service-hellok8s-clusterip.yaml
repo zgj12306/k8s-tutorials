@@ -1,0 +1,13 @@
+# endpoints 定义。被selector 选中的 Pod,就成为service的 Endpoints。它维护者 Pod 的 IP 地址，只要服务中
+# 的 Pod 集合发生更改，Endpoints 就会被更新。
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-hellok8s-clusterip
+spec:
+  type: ClusterIP # 集群内部访问的服务用ClusterIP
+  selector:
+    app: hellok8s
+  ports:
+    - port: 3000
+      targetPort: 3000
